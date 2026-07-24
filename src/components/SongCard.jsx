@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import PlayPause from './PlayPause';
 import { playPause, setActiveSong } from '../redux/features/playerSlice';
-
+import { defaultCover } from '../assets'
 
 const SongCard = ({song, isPlaying, activeSong, data, i}) => {
    
@@ -27,8 +27,7 @@ const SongCard = ({song, isPlaying, activeSong, data, i}) => {
           className={`absolute inset-0 justify-center items-center 
        bg-black bg-opacity-50 group-hover:flex
        ${activeSong?.title === song.title ? "flex bg-black bg-opacity-70" : "hidden"}
-        `}
-        >
+        `}>
           <PlayPause
             song={song}
             isPlaying={isPlaying}
@@ -41,6 +40,9 @@ const SongCard = ({song, isPlaying, activeSong, data, i}) => {
           className="w-full h-full rounded-lg object-cover"
           alt="song_img"
           src={song.images.coverart}
+          onError={(e) => {
+          e.target.src = defaultCover;
+          }}
         />
       </div>
       <div className="mt-4 flex flex-col">

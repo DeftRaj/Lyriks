@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux';
 import {Swiper, SwiperSlide} from 'swiper/react';
 import {FreeMode} from 'swiper';
-import {adaptJamendoSong} from "../utils/jamendoAdapter";
+import {adaptAudiusSong} from "../utils/audiusAdapter";
 
 
 import PlayPause from './PlayPause';
@@ -49,7 +49,7 @@ const TopPlay = () => {
   useEffect(() => {divRef.current.scrollIntoView({behavior: 'smooth'});
   } );
   
-  const songs = data?.results?.map(adaptJamendoSong);
+  const songs = data?.data?.map(adaptAudiusSong);
   const topPlays = songs?.slice(0, 5);
 
   const handlePauseClick = () => {
@@ -110,8 +110,8 @@ const TopPlay = () => {
                 song={song}
                 style={{width: '25%', height: 'auto'}}
                 className="shadow-lg rounded-full animate-slideright">
-                  <Link to={`/artists/${song?.artists?.[0]?.adamid}`}>
-                    <img src={song?.images?.coverart} alt="name"
+                  <Link to={`/artists/${song?.artists?.[0]?.id}`}>
+                    <img src={song?.artists?.[0]?.profile} alt="name"
                     className="rounded-full w-full object-cover"/>
                   </Link>
               </SwiperSlide>
