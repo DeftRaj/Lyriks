@@ -16,6 +16,13 @@ import { createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
         getArtistDetails: builder.query({
            query: ({artistid}) => `artistSongs?artist_id=${artistid}`
           }),
+        getSearchTracks: builder.query({
+           query: ({searchTerm}) => `searchTracks?query=${encodeURIComponent(searchTerm)}`
+          }),
+        // getSearchTracks: builder.query({
+        //    query: ({searchTerm,genre,mood}) => `searchTrack?query=${searchTerm}&genre=${genre}&mood=${mood}`
+        //   }),
+
     }),   
   });
 
@@ -24,4 +31,5 @@ import { createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
     useGetTopChartsQuery,
     useGetSongDetailsQuery,
     useGetArtistDetailsQuery,
+    useGetSearchTracksQuery
   } = shazamCoreApi;

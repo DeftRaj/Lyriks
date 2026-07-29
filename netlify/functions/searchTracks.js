@@ -1,19 +1,18 @@
 export async function handler(event) {
-    //console.log("Query:", event.queryStringParameters);
-  const artist_id = event.queryStringParameters.artist_id;
-    // console.log("artist_id:", artist_id);
+  const searchTerm = event.queryStringParameters.query;
+    console.log("searchTerm",searchTerm)
   try {
-    if (!artist_id) {
+    if (!searchTerm) {
       return {
         statusCode: 400,
         body: JSON.stringify({
-          error: "Track ID is missing",
+          error: "No matching songs",
         }),
       };
     }
 
-    const response = await fetch(
-      `https://api.audius.co/v1/users/${artist_id}/tracks`,
+     const response = await fetch(
+        `https://api.audius.co/v1/tracks/search?query=${encodeURIComponent(searchTerm)}`
     );
     const data = await response.json();
 
