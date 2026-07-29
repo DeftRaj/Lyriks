@@ -1,18 +1,18 @@
-export async function handler() {
-  // const clientId = process.env.JAMENDO_CLIENT_ID;
+export async function handler(event) {
+  const track_id = event.queryStringParameters.track_id;
 
   try {
-    // if (!clientId) {
-    //   return {
-    //     statusCode: 500,
-    //     body: JSON.stringify({
-    //       error: "JAMENDO_CLIENT_ID is missing",
-    //     }),
-    //   };
-    // }
+    if (!track_id) {
+      return {
+        statusCode: 400,
+        body: JSON.stringify({
+          error: "Track ID is missing",
+        }),
+      };
+    }
 
     const response = await fetch(
-      `https://api.audius.co/v1/tracks/trending`,
+      `https://api.audius.co/v1/tracks/${track_id}`,
     );
     const data = await response.json();
 

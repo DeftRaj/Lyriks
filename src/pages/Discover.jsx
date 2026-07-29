@@ -10,8 +10,8 @@ const Discover = () => {
     const { activeSong, isPlaying } = useSelector((state)=> state.player);
     const {data, isFetching, error} = useGetTopChartsQuery();
     const genreTitle = 'Pop';
-    const test= data?.data;
-    console.log(test);
+    // const test= data?.data;
+    // console.log(test);
     
     const songs = data?.data?.map(adaptAudiusSong) ?? [];
     
@@ -47,7 +47,6 @@ const Discover = () => {
                 />
             ))}
         </div>
-        
     </div>
    );
 

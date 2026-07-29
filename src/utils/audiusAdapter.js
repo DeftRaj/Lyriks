@@ -2,11 +2,17 @@ import { defaultCover } from "../assets";
 import { profilePicture } from "../assets";
 
 export const adaptAudiusSong = (track) => ({
-  key: track.id,
+  key: track.track_id,
+
+  trackId: track.track_id,
+
+  id: track.id,
 
   title: track.title,
 
   subtitle: track.user?.name ?? "Unknown Artist",
+
+  // genreTitle: track.genre ?? "Unknown Genre",
 
   images: {
     coverart:
@@ -33,6 +39,8 @@ export const adaptAudiusSong = (track) => ({
     {
       id: track.user?.id,
       alias: track.user?.name,
+      bio : track?.user?.bio ||
+      "Bio not available",
       profile: track.user?.profile_picture?.["1000x1000"] ||
       track.user?.profile_picture?.["480x480"] ||
       track.user?.profile_picture?.["150x150"] ||
@@ -41,9 +49,17 @@ export const adaptAudiusSong = (track) => ({
     },
   ],
 
+  
+
   duration: track.duration,
 
   genre: track.genre,
+
+  stream: track.stream?.url,
+
+  tags: track.tags,
+
+  releaseDate: track.release_date,
 
   raw: track,
  

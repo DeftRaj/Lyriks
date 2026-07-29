@@ -16,6 +16,10 @@ const SongCard = ({song, isPlaying, activeSong, data, i}) => {
     dispatch(setActiveSong({song, data, i}));
     dispatch(playPause(true));
    };
+  //  console.log("Song object:", song);
+  //   console.log("song.key:", song.key);
+  //   console.log("song.id:", song.id);
+  //   console.log("song.track_id:", song.track_id);
 
   return (
     <div
