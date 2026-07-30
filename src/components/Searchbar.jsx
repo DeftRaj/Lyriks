@@ -16,7 +16,7 @@ const Searchbar = () =>{
   
   return(
   <form onSubmit={handleSubmit} autoComplete="off" className="p-2 text-gray-400
-   focus-within:text-gray-600">
+   focus-within:text-gray-600 w-[80%] relative z-30 min-h-[72px]">
    <label htmlFor='search-field' className='sr-only'>
     Search Songs
    </label>
@@ -37,16 +37,7 @@ const Searchbar = () =>{
    </div>
 
   </form>
-  // <div className="flex w-full py-1 mt-2 mb-2 text-[14px] 
-  // bg-[#1e1b2c] rounded-full color-[#ffffff]">
-  //   <input type="text" placeholder="Search for songs or artists" 
-  //   className="flex-1 w-full p-2 pl-5 text-sm bg-transparent
-  //    rounded-full outline-none text-[#ffffff]"/>
-  //   <button type="submit" className="p-2 pr-5 text-sm text-[#ffffff]
-  //    rounded-full hover:bg-[#ffffff]/10">
-  //     Search
-  //   </button>
-  // </div>
+ 
 );
 }
 

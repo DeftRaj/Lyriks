@@ -6,16 +6,16 @@ import { useSelector } from "react-redux";
 
 const Search = () =>{ 
    const { searchTerm } = useParams();
-   console.log("st",searchTerm)
+   //console.log("st",searchTerm)
    const { data, isFetching, error } = useGetSearchTracksQuery({
     searchTerm,});
-    console.log("data",data)
+   // console.log("data",data)
    const {activeSong, isPlaying} = useSelector((state)=>state.player);
    
    const songs = data?.data?.map(adaptAudiusSong) ?? [];
-   console.log("songs",songs)
+   //console.log("songs",songs)
    if (isFetching) return <Loader title="Searching songs..." />;
-   console.log("e",error)
+  //  console.log("e",error)
    if (error) return <Error />;
 
   return(
