@@ -1,22 +1,33 @@
 import { useSelector } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
+import { useState } from "react";
 
-import { Searchbar, Sidebar, MusicPlayer, TopPlay } from './components';
+import { Searchbar, Sidebar, MusicPlayer, TopPlay, Header, MobileMenuButton } from './components';
 import { ArtistDetails, TopArtists, AroundYou, Discover, Search, SongDetails, TopCharts } from './pages';
 
 const App = () => {
   const { activeSong } = useSelector((state) => state.player);
-
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   return (
     <div className="relative flex min-h-screen">
-      <Sidebar />
+      <Sidebar
+          mobileMenuOpen={mobileMenuOpen}
+          setMobileMenuOpen={setMobileMenuOpen}
+      />
       <div className="flex-1 flex flex-col bg-gradient-to-br from-black to-[#121286]">
-        <div className="sticky top-0 z-30 bg-gradient-to-br from-black to-[#121276]">
+        <Header>
+            <MobileMenuButton
+              mobileMenuOpen={mobileMenuOpen}
+              setMobileMenuOpen={setMobileMenuOpen}
+            />
+        </Header>
+        {/* <div className="sticky top-0 z-30 h-[72px] flex items-center bg-gradient-to-br
+          from-black to-[#121276] shrink-0">
             <Searchbar />
-        </div>
+        </div> */}
         
 
-        <div className="px-6 h-[calc(100dvh-72px)] overflow-y-auto hide-scrollbar flex xl:flex-row flex-col-reverse">
+        <div className="px-6 pt-[8px] h-screen overflow-y-auto hide-scrollbar flex xl:flex-row flex-col-reverse">
           <div className="flex-1 h-fit pb-40">
             <Routes>
               <Route path="/" element={<Discover />} />
@@ -35,7 +46,7 @@ const App = () => {
       </div>
 
       {activeSong?.title && (
-        <div className="absolute h-28 bottom-0 left-0 right-0 flex animate-slideup bg-gradient-to-br from-white/10 to-[#2a2a80] backdrop-blur-lg rounded-t-3xl z-10">
+        <div className="fixed h-28 bottom-0 left-0 right-0 flex animate-slideup bg-gradient-to-br from-white/10 to-[#2a2a80] backdrop-blur-lg rounded-t-3xl z-30">
           <MusicPlayer />
         </div>
       )}

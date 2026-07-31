@@ -1,7 +1,4 @@
-import { useState } from 'react';
 import { NavLink} from 'react-router-dom';
-import {HiOutlineMenu} from 'react-icons/hi';
-import {RiCloseLine} from 'react-icons/ri';
 
 import {logo} from '../assets';
 import {links} from '../assets/constants';
@@ -24,8 +21,8 @@ const NavLinks = ({handleClick}) => (
   </div>
 );
 
-const Sidebar = () => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+const Sidebar = ({ mobileMenuOpen, setMobileMenuOpen }) => {
+  
   
   return(
     <>
@@ -34,19 +31,10 @@ const Sidebar = () => {
           <img src={logo} alt="logo" className = " w-full h-9 object-contain" />
           <NavLinks/>
       </div>
-
-      <div className="fixed md:hidden z-50 top-6
-      right-3">
-        {mobileMenuOpen ? 
-        (<RiCloseLine className="w-6 h-6 text-white mr-2" 
-           onClick={() => setMobileMenuOpen(false)}/>) 
-        : <HiOutlineMenu size={24} className="text-white mr-2"
-           onClick={() => setMobileMenuOpen(true)}/>}
-      </div>
-
+      {/* sliding menu */}
       <div className={`fixed top-0 h-screen w-2/3 
           bg-gradient-to-tl from-white/10 to-[#483d8b] backdrop-blur-lg
-          z-40 p-6 md:hidden smooth-transition
+          z-50 p-6 md:hidden smooth-transition
           ${mobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}>
           <img src={logo} alt="logo" className = " w-full h-9 object-contain" />
           <NavLinks handleClick={() => setMobileMenuOpen(false)} />

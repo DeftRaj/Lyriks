@@ -15,7 +15,7 @@ const TopCharts = () => {
     if (isFetching) return <Loader title="Loading Top Charts"/>
     if (error) return <Error/>
     return(
-            <div className="flex flex-col">
+            <div className="flex flex-col pt-[72px]">
                 <h2 className="font-bold text-3xl text-white 
                 text-left mt-4 mb-10">Discover Top Charts</h2>
                 <div className="flex flex-wrap sm:justify-start justify-center

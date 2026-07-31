@@ -56,8 +56,14 @@ const TopPlay = () => {
   const divRef = useRef(null);
 
  
-  useEffect(() => {divRef.current?.scrollIntoView({behavior: 'smooth'});
-  },);
+  // useEffect(() => {divRef.current?.scrollIntoView({behavior: 'smooth'});
+  // },);
+  useEffect(() => {
+  window.scrollTo({
+    top: 0,
+    behavior: "instant", // or omit behavior
+  });
+  }, []);
   
   const songs = data?.data?.map(adaptAudiusSong);
   const topPlays = songs?.slice(0, 5);

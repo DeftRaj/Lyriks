@@ -5,25 +5,27 @@ const Player = ({ activeSong, isPlaying, volume, seekTime, onEnded, onTimeUpdate
   const ref = useRef(null);
   // eslint-disable-next-line no-unused-expressions
   
-  useEffect(() => {
+useEffect(() => {
   if (!ref.current) return;
 
   if (isPlaying) {
-    ref.current.play();
+    ref.current.play().catch((err) => {
+      console.log(err);
+    });
   } else {
     ref.current.pause();
   }
-  }, [isPlaying, activeSong]);
+}, [isPlaying, activeSong]);
 
 
   useEffect(() => {
-    ref.current.volume = volume;
-  }, [volume]);
+  if (!ref.current) return;
+  ref.current.volume = volume;
+}, [volume]);
   // updates audio element only on seekTime change (and not on each rerender):
   useEffect(() => {
-    ref.current.currentTime = seekTime;
-  }, [seekTime]);
-
+  ref.current.currentTime = seekTime;
+}, [seekTime]);
   return (
     <audio
       src={activeSong?.hub?.actions[1]?.uri}
