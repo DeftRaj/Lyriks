@@ -11,7 +11,7 @@ const App = () => {
     <div className="relative flex min-h-screen">
       <Sidebar />
       <div className="flex-1 flex flex-col bg-gradient-to-br from-black to-[#121286]">
-        <div className="sticky top-0 z-40 bg-gradient-to-br from-black to-[#121276]">
+        <div className="sticky top-0 z-30 bg-gradient-to-br from-black to-[#121276]">
             <Searchbar />
         </div>
         

@@ -30,7 +30,7 @@ const Sidebar = () => {
   return(
     <>
       <div className="md:flex hidden flex-col w-[200px] 
-      py-6 px-4 bg-[#191624]">
+      py-6 px-4 bg-[#191624] ">
           <img src={logo} alt="logo" className = " w-full h-9 object-contain" />
           <NavLinks/>
       </div>
@@ -45,7 +45,7 @@ const Sidebar = () => {
       </div>
 
       <div className={`fixed top-0 h-screen w-2/3 
-          to-[#483d8b] bg-[#383373]
+          bg-gradient-to-tl from-white/10 to-[#483d8b] backdrop-blur-lg
           z-40 p-6 md:hidden smooth-transition
           ${mobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}>
           <img src={logo} alt="logo" className = " w-full h-9 object-contain" />
